@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="QuerySQL">
+
+	<select id="getQueryList_sql" resultType="Query">  
+       	<![CDATA[
+			select * from query where queryWord like CONCAT('%','${queryWord}','%' )
+       	]]>
+	</select>
+
+	<!--通过id获取resultPage记录 -->
+	<select id="getQueryById_sql" parameterType="long" resultType="Query">   
+		<![CDATA[   
+		select * from query where id=#{id}   
+		]]>
+	</select>
+
+	<!--增加新的记录 -->
+	<insert id="saveQuery_sql" parameterType="Query" useGeneratedKeys="true" keyProperty="id">
+		insert into query(productId,queryWord)
+		values
+		(#{productId},#{queryWord})
+		<selectKey resultType="long" keyProperty="id">  
+	    	SELECT LAST_INSERT_ID() AS id
+		</selectKey>
+	</insert>
+
+	<!--修改记录 -->
+	<update id="updateQueryById_sql" parameterType="Query">
+		update query
+		<set>
+			<if test="id != null"> 
+	        	id=#{id},
+	        </if>  
+	        <if test="productId != null"> 
+	        	productId=#{productId},
+	        </if>
+	        <if test="queryWord != null"> 
+	        	queryWord=#{queryWord}
+	        </if>
+	    </set>
+		where id=#{id}
+	</update>
+
+	<!--删除记录 -->
+	<delete id="delQueryById_sql" parameterType="long">
+		delete from query where id=#{id}
+	</delete>
+
+</mapper>
