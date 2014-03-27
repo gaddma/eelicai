@@ -9,9 +9,9 @@
 	</appender>
 	<!-- 主日志 -->
 	<appender name="main" class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<File>/data0/search/op-sitemaster-widget/logs/main.log</File>
+		<File>/data0/search/sample/logs/main.log</File>
 		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
-			<FileNamePattern>/data0/search/op-sitemaster-widget/logs/main%i.log</FileNamePattern>
+			<FileNamePattern>/data0/search/sample/logs/main%i.log</FileNamePattern>
 			<MinIndex>1</MinIndex>
 			<MaxIndex>50</MaxIndex>
 		</rollingPolicy>
@@ -23,7 +23,7 @@
 		</encoder>
 	</appender>
 	<!-- log -->
-	<logger name="com.panguso" additivity="false" level="info">
+	<logger name="com.fb" additivity="false" level="info">
 		<appender-ref ref="main" />
 		<appender-ref ref="stdout" />
 	</logger>

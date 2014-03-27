@@ -21,6 +21,8 @@ http://www.springframework.org/schema/task http://www.springframework.org/schema
 			</list>
 		</property>
 	</bean>
+	
+	<bean class="com.fb.po.Query" scope="singleton"></bean>
 
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	<!-- bean annotation driven -->

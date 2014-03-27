@@ -33,6 +33,7 @@ public class SystemInitListener extends ContextLoaderListener {
 	@Override
 	public void contextInitialized(ServletContextEvent sce) {
 		try {
+			System.out.println("--------------system init start-----------------");
 			String path = sce.getServletContext().getRealPath("/") + "WEB-INF"
 					+ File.separator + "conf";
 
